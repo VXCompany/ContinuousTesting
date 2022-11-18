@@ -23,4 +23,3 @@ stages:
         PathtoPublish: '$(Build.SourcesDirectory)/code/main.json'
         ArtifactName: 'main'
         publishLocation: 'Container'
-		
