@@ -1,9 +1,11 @@
-targetScope = 'subscription'
+param storageAccountName string = 'sa18112022ct'
+param location string = resourceGroup().location
 
-param location string = 'westeurope'
-
-resource symbolicname 'Microsoft.Resources/resourceGroups@2021-04-01' = {
-  name: 'ct1'
+resource stg 'Microsoft.Storage/storageAccounts@2022-05-01' = {
+  name: storageAccountName
   location: location
-  properties: {}
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'StorageV2'
 }
