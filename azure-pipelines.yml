@@ -18,7 +18,7 @@ stages:
         scriptLocation: 'inlineScript'
         inlineScript: 'az bicep build --file code/main.bicep'
 
-    - publish: '$(Build.ArtifactStagingDirectory)/code/main.json'
+    - publish: '$(Build.SourcesDirectory)/code/main.json'
       displayName: 'Publish template'
       artifact: drop
 
