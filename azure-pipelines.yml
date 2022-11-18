@@ -22,5 +22,16 @@ stages:
       displayName: 'Publish template'
       artifact: drop
 
-
-
+- stage: Deploy
+  dependsOn: build
+  jobs:
+  - job: DeployToAzure
+    steps:
+    - download: current
+      artifact: drop
+    - task: AzureCLI@2
+      inputs:
+        azureSubscription: 'Visual Studio Enterprise – MPN'
+        scriptType: 'pscore'
+        scriptLocation: 'inlineScript'
+        inlineScript: 'az deployment group create --template-file $(Pipeline.Workspace)\drop\main.bicep --resource-group ct1'
