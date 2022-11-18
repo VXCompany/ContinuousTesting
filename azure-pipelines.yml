@@ -34,4 +34,4 @@ stages:
         azureSubscription: 'Visual Studio Enterprise – MPN'
         scriptType: 'pscore'
         scriptLocation: 'inlineScript'
-        inlineScript: 'az deployment group create --template-file $(Pipeline.Workspace)\drop\main.bicep --resource-group ct1'
+        inlineScript: 'az deployment group create --template-file $(Pipeline.Workspace)\drop\main.json --resource-group ct1'
