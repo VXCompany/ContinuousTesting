@@ -23,3 +23,18 @@ stages:
         PathtoPublish: '$(Build.SourcesDirectory)/code/main.json'
         ArtifactName: 'main'
         publishLocation: 'Container'
+        
+- stage: Deploy
+  jobs:
+  - job: DeployToAzure
+    steps:
+    - task: AzureCLI@2
+      inputs:
+        azureSubscription: 'Visual Studio Enterprise – MPN'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          az deployment group create  `
+          --template-file $(Build.SourcesDirectory)/code/main.json `
+          --resource-group ct1
+
