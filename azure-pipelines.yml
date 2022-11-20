@@ -1,7 +1,11 @@
 name: CD
 
 trigger:
-- none
+  branches:
+   include:
+     - main
+
+pr: none
 
 pool:
   vmImage: ubuntu-latest
