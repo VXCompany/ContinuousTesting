@@ -9,3 +9,11 @@ resource stg 'Microsoft.Storage/storageAccounts@2022-05-01' = {
   }
   kind: 'StorageV2'
 }
+
+module df 'datafactory.bicep' = {
+  name: 'datafactory'
+  params: {
+    location: location
+    storageAccountName: storageAccountName
+  }
+}
